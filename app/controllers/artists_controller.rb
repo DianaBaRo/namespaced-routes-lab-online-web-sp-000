@@ -1,6 +1,16 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
+    @preference = Preference.first
+
+    if @preference
+      if @preference.artist_sort_order = "ASC"
+        @artists = Artist.all.sort_by{|artist| artist.name}
+      else
+        @artists = Artist.all.sort_by{|artist| artist.name}.reverse
+      end
+    else
+      @artists = Artist.all
+    end
   end
 
   def show
