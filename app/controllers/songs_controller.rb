@@ -18,6 +18,7 @@ class SongsController < ApplicationController
       else
         @songs.sort_by!{|song| song.title}.reverse
       end
+    end
   end
 
   def show
